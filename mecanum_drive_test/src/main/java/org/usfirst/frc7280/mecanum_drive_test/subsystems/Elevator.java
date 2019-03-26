@@ -121,6 +121,7 @@ public class Elevator extends Subsystem {
   }
 
   public void elevatorDown(){
+    //这边改成速度pid会不会好些
     targetPosition = elevatorPosition + 5000;
     robotMap.setMotorPID(
         elevatorMaster, 
@@ -129,8 +130,9 @@ public class Elevator extends Subsystem {
         Constants.kElevatorDownI, 
         Constants.kElevatorDownD);
         elevatorMaster.configClosedLoopPeakOutput(Constants.kSlotIdx, Constants.kElevatorDownPeakOutput, Constants.kTimeoutMs);
-
+   
     elevatorMaster.set(ControlMode.Position, targetPosition);
+    
 
   }
 
